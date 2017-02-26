@@ -14,8 +14,8 @@ void setup(){
   
   for(int i = 0; i < att; i++){
     Attractor a = new Attractor(random(0, 400), random(0, 400));
-    println(a.poss.x);
-    println(a.poss.y);
+    //println(a.poss.x);
+    //println(a.poss.y);
     l.add(a);
     //a.show();
   }
@@ -34,6 +34,7 @@ void draw(){
     p.show();
     p.reset();
   }
+  saveFrame("output/frames####.png");
 }
 class Attractor{
   PVector poss = new PVector(0, 0);
