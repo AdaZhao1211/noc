@@ -6,7 +6,7 @@
 class Spring extends VerletSpring3D {
 
   Spring(Particle a, Particle b) {
-    super(a, b, 8, 0.98);
+    super(a, b, w, 0.98);
   }
   
   void display() {

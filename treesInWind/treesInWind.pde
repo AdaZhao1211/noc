@@ -39,7 +39,7 @@ boolean drawVeins = false;
 boolean blackLeaves = false;
 boolean drawLeaves = true;
 
-//int width = 1680;
+//int witodth = 1680;
 //int height = 1050;
 
 void setup(){
@@ -122,14 +122,14 @@ void initializeTreeValues(){
   totalBranchLength = 400;
   maxBranchThickness = 10;
   maxBranchSizeForLeaves = 4;
-  minBranchThickness = 2; 
-  minSpawnDistance = .2;
-  branchSpawnOdds = .8; 
-  branchSpawnOddsOfSecond = 0;
-  mindThetaSplit = PI*.1;
-  maxdThetaSplit = PI*.3;
-  maxdThetaWander = PI/20;
-  dBranchSize = .2;
+  minBranchThickness = 2; //
+  minSpawnDistance = .2;//
+  branchSpawnOdds = .8; //
+  branchSpawnOddsOfSecond = 0;//
+  mindThetaSplit = PI*.1;//
+  maxdThetaSplit = PI*.3;//
+  maxdThetaWander = PI/20;//
+  dBranchSize = .2;//
   //leaves
   minLength = 10;
   maxLength = 30;
