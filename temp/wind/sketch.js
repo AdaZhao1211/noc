@@ -99,13 +99,14 @@ function draw(){
   // }
   // endShape();
 
-  beginShape();
-  //texture(flagimg);
+  beginShape(TRIANGLE_STRIP);
   fill(0);
-  vertex(100, 100, 0);
-  vertex(100, 200, 0);
-  vertex(200, 100, 0);
-  vertex(200, 200, 0);
+  texture(flagimg);
+
+  vertex(100, 100, 0, 0, 0);
+  vertex(100, 200, 0, 0, 400);
+  vertex(200, 100, 0, 300, 0);
+  vertex(200, 200, 0, 300, 400);
   endShape();
 
 
