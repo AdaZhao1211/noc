@@ -26,7 +26,7 @@ class Ball {
       }
     }
     applyForce(new PVector(windsp, 0));
-    println(windsp);
+    //println(windsp);
     vel.add(acc);
     pos.add(vel);
     

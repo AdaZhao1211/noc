@@ -1,3 +1,8 @@
+/*
+Ada Zhao
+Nature of Code
+03/06/2017
+*/
 import controlP5.*;
 import toxi.physics3d.*;
 import toxi.physics3d.behaviors.*;
@@ -14,6 +19,8 @@ float windspeed;
 float windmin;
 float winddeg;
 float noiseCount = 10.0;
+float windorigin;
+float windflag;
 //flag
 int rows = 41;
 int cols = 31;
@@ -51,7 +58,7 @@ void setup() {
   //println(winddeg);
   //...flag
   flagimg = loadImage("flag.jpg");
-  Vec3D gravity = new Vec3D(0, 0.01, 0);
+  Vec3D gravity = new Vec3D(0, 0.05, 0);
   GravityBehavior3D gb = new GravityBehavior3D(gravity);
   phy.addBehavior(gb);
   float x = -cols*w/2;
@@ -126,6 +133,8 @@ void draw() {
   tree.drawTree(300, 600);
   t2.drawTree(400, 550);
   windspeed = map(noise(noiseCount+=0.001), 0, 1, windmin, windsp);
+  windflag = map(noise(noiseCount+=0.001), 0, 1, windorigin, windorigin*1.1);
+
   //println(windspeed);
   pushMatrix();
   translate(610, height/2);
@@ -147,7 +156,7 @@ void draw() {
       //float wx = map(noise(xoff, yoff, zoff), 0, 1, -0.1, 1);
       //float wy = map(noise(xoff+5000, yoff+5000, zoff), 0, 1, -0.1, 0.1);
       //float wz = map(noise(xoff+10000, yoff+10000, zoff), 0, 1, -0.1, 0.1);
-      Vec3D wind = new Vec3D(windspeed*5*sin(winddeg), windspeed*5*cos(winddeg), 0);
+      Vec3D wind = new Vec3D(windflag*5*cos(winddeg), windflag*5*sin(winddeg), 0);
       p1.addForce(wind);
     }
     endShape();
@@ -158,7 +167,7 @@ void draw() {
   pushMatrix();
   translate(balloon.pos.x, balloon.pos.y+20);
   for (int i = 1; i < 100; i++) {
-    Vec3D wind = new Vec3D(windspeed*sin(winddeg), windspeed*cos(winddeg), 0);
+    Vec3D wind = new Vec3D(windflag*cos(winddeg), 0, windflag*sin(winddeg));
     bps[i].addForce(wind);
     stroke(0);
     line(bps[i-1].x, bps[i-1].y, bps[i].x, bps[i].y);
@@ -179,6 +188,7 @@ void draw() {
 
   
   imageMode(CORNER);
+  //saveFrame("output/frames####.png");
 }
 
 void apicall(String _city) {
@@ -187,11 +197,15 @@ void apicall(String _city) {
   String api_key = "5ca92dceefd25032d317c6e460c1f71a";
   String url = "http://api.openweathermap.org/data/2.5/weather?q="+_city+"&appid="+api_key;
   JSONObject json = loadJSONObject(url).getJSONObject("wind");
+  println(json.getFloat("deg"));
   winddeg = map(json.getFloat("deg"), 0, 360, 0, TWO_PI);
   windsp = json.getFloat("speed")/100;
-  if (winddeg > PI/2 && winddeg < 3*PI/2) {
+  windorigin = windsp/10;
+  if (winddeg >PI/2 && winddeg < 3*PI/2) {
     windsp = -windsp;
   }
+  println(windsp);
+  //windsp = windsp*sin(winddeg);
   windmin = windsp-0.005;
   windsp += 0.005;
 }
