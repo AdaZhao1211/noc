@@ -9,7 +9,7 @@ void setup () {
 
 
 void draw () {
-  background (250);
+  background (0, 0, 100);
   drawStream ();
 }
 
@@ -19,9 +19,11 @@ void drawStream () {
     ny = 0;
     for (int j=0; j<width; j += 10) {
       float angle = map (noise (nx, ny, nz), 0, 1.0, 0, TWO_PI);
+      colorMode(HSB, 100);
+      float cc = map(angle, 0, TWO_PI, 0, 100);
       float x = 50 * cos (angle);
       float y = 50 * sin (angle);
-      //stroke(color(map(nz, 0, 1, 0, 100), 100, 100));
+      stroke(cc, 100, 100);
       line (i, j, i+x, j+y);
       ny += 0.05;
     }

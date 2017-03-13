@@ -1,8 +1,8 @@
 /*
 Ada Zhao
-Nature of Code
-03/06/2017
-*/
+ Nature of Code
+ 03/06/2017
+ */
 import controlP5.*;
 import toxi.physics3d.*;
 import toxi.physics3d.behaviors.*;
@@ -186,9 +186,9 @@ void draw() {
     newStart();
   }
 
-  
+
   imageMode(CORNER);
-  //saveFrame("output/frames####.png");
+  saveFrame("output/frames####.png");
 }
 
 void apicall(String _city) {
