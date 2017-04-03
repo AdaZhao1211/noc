@@ -21,7 +21,7 @@ class DNA {
       }
     }
     this.fit = score;
-    println(score);
+    //println(score);
   }
 
   DNA crossover(DNA B) {
@@ -29,12 +29,12 @@ class DNA {
     // Half from one, half from the other
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
-        if(child.genes[i][j] == target[i][j]){
+        if (child.genes[i][j] == target[i][j]) {
           continue;
         }
-        if(random(1) < 0.5){
+        if (random(1) < 0.5) {
           child.genes[i][j] = genes[i][j];
-        }else {
+        } else {
           child.genes[i][j] = B.genes[i][j];
         }
       }
@@ -45,7 +45,11 @@ class DNA {
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
         if (random(1) < mutationRate) {
-          genes[i][j]= int(random(255));
+          if (genes[i][j] == target[i][j]) {
+            continue;
+          }
+          genes[i][j]= int(random(256));
+          //println(genes[i][j]);
         }
       }
     }

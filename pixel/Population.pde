@@ -19,6 +19,7 @@ class Population {
   int c, r;
   int best;
   int minFit;
+  int maxFitness;
 
   Population(int[][] p, float m, int num, int cols, int rows) {
     target = p;
@@ -49,7 +50,7 @@ class Population {
     // Clear the ArrayList
     matingPool.clear();
 
-    float maxFitness = 0;
+    maxFitness = 0;
     minFit = c *r;
     for (int i = 0; i < population.length; i++) {
       if (population[i].fit > maxFitness) {
@@ -61,12 +62,19 @@ class Population {
       }
     }
     //println(population.length);
-    if(minFit == 0) minFit = 1;
+    if (minFit == 0) minFit = 1;
     for (int i = 0; i < population.length; i++) {
-      float n = (population[i].fit-minFit)/minFit;  // Arbitrary multiplier, we can also use monte carlo method
-      int nn = int(map(n, 0, 1, 0, 20));
+      if (population[i].fit <= minFit) continue;
+      float n = map(population[i].fit, minFit, maxFitness, 0, 1);  // Arbitrary multiplier, we can also use monte carlo method
+      int nn = int(n*20);
+      //println(nn);
       for (int j = 0; j < nn; j++) {              // and pick two random numbers
         matingPool.add(population[i]);
+      }
+    }
+    if (matingPool.size() == 0) {
+      for (int j = 0; j < population.length; j++) {              // and pick two random numbers
+        matingPool.add(population[j]);
       }
     }
   }
@@ -89,7 +97,7 @@ class Population {
   // Compute the current "most fit" member of the population
   DNA getBest() {
     DNA temp = population[best];
-    if (temp.fit == 1) finished = true;
+    if (temp.fit == c*r) finished = true;
     return temp;
   }
 
@@ -100,28 +108,28 @@ class Population {
   int getGenerations() {
     return generations;
   }
-  int bestScore(){
+  int bestScore() {
     return population[best].fit;
   }
-
-  // Compute average fitness for the population
-  //float getAverageFitness() {
-  //  float total = 0;
-  //  for (int i = 0; i < population.length; i++) {
-  //    total += population[i].fitness;
-  //  }
-  //  return total / (population.length);
-  //}
-
-  //String allPhrases() {
-  //  String everything = "";
-
-  //  int displayLimit = min(population.length,50);
-
-
-  //  for (int i = 0; i < displayLimit; i++) {
-  //    everything += population[i].getPhrase() + "\n";
-  //  }
-  //  return everything;
-  //}
 }
+
+// Compute average fitness for the population
+//float getAverageFitness() {
+//  float total = 0;
+//  for (int i = 0; i < population.length; i++) {
+//    total += population[i].fitness;
+//  }
+//  return total / (population.length);
+//}
+
+//String allPhrases() {
+//  String everything = "";
+
+//  int displayLimit = min(population.length,50);
+
+
+//  for (int i = 0; i < displayLimit; i++) {
+//    everything += population[i].getPhrase() + "\n";
+//  }
+//  return everything;
+//}
