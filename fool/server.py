@@ -72,7 +72,7 @@ def upload():
 # Run app:
 if __name__ == '__main__':
     # Localhost and port 8080
-    app.run( host='0.0.0.0', port=8248, debug=False )
+    app.run( host='0.0.0.0', port=8080, debug=False )
     # If you enable debugging, you'll get more info
     # server will restart automatically when code changes, etc.
     # app.run( host='0.0.0.0', port=8080, debug=True )
