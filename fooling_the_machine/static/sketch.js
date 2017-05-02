@@ -108,7 +108,7 @@ function classify() {
   function success(reply) {
     // Parse the reply
     var result = JSON.parse(reply);
-    console.log(result);
+    //console.log(result);
 
     // As long as we got something
     if (result.number != undefined) {
@@ -131,8 +131,17 @@ function classify() {
     i.style.left = store[finalnumber][c].x;
     i.style.top = store[finalnumber][c].y;
     imgs.append(i).fadeIn();
-  }
+    noStroke();
+    fill(0);
+    rect(w/2+210, 0, w/2-210, 4*hg+400);
+    image(finalimg, w/2+300, 2*hg, 200, 200);
+    textSize(30);
+    strokeWeight(1);
+    fill(255);
+    text("predicted number: "+finalnumber, w/2+300, 2*hg+250);
+    text("confidence: "+nf(100 * confidence, 2, 1) + "%", w/2+300, 2*hg+350);
 
+  }
   function error(reply) {
     console.log('error');
   }
