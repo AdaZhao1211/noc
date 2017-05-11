@@ -16,4 +16,5 @@ A small version of the drawing will be put at a certain position, which forms a 
 
 ## Reference
 [Fooling the Machine](http://www.popsci.com/byzantine-science-deceiving-artificial-intelligence)
+
 [Shiffman's cnn flask example](https://github.com/shiffman/NOC-S17-2-Intelligence-Learning/tree/master/week5-cnn-tensorflow/02b_cnn_flask_p5)
