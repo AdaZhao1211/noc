@@ -7,25 +7,25 @@ int att = 6;
 void setup(){
   background(255);
   colorMode(HSB, 100);
-  beginRecord(PDF, "test2.pdf");
+  //beginRecord(PDF, "test.pdf");
   //l.add(new Attractor(40, 100));
   //l.add(new Attractor(250, 70));
   //l.add(new Attractor(347, 30));
   
   for(int i = 0; i < att; i++){
-    Attractor a = new Attractor(random(0, 400), random(0, 400));
+    Attractor a = new Attractor(random(0, 800), random(0, 800));
     //println(a.poss.x);
     //println(a.poss.y);
     l.add(a);
     //a.show();
   }
   for(int i = 0; i < n; i++){
-    Particle p = new Particle(200, 200);
+    Particle p = new Particle(400, 400);
     p.update(l);
     p.show();
     list.add(p);
   }
-  size(400, 400);
+  size(800, 800);
 }
 void draw(){
   for(int i = 0; i < n; i++){
@@ -34,7 +34,7 @@ void draw(){
     p.show();
     p.reset();
   }
-  saveFrame("output/frames####.png");
+  //saveFrame("output/frames####.png");
 }
 class Attractor{
   PVector poss = new PVector(0, 0);
@@ -95,7 +95,8 @@ class Particle{
 void keyPressed() {
   if (key == 's') {
     println("yes");
-    endRecord();
-    //exit();
+    saveFrame("output/frames####.png");
+    //endRecord();
+    exit();
   }
 }

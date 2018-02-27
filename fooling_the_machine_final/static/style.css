@@ -1,0 +1,41 @@
+body{
+  background-color: #000000;
+  height: 100%;
+  overflow: auto;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+@font-face {
+    font-family: "myFirstFont";
+    src:url("AdobeClean-Bold.otf");
+}
+img:hover{
+  width: 200px;
+  height: 200px;
+}
+
+button{
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: absolute;
+  left: 70%;
+  top: 50%;
+}
+
+#instruction{
+  font-size: 30px;
+  color: white;
+  font-family: "myFirstFont";
+}

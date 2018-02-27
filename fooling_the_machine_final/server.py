@@ -27,6 +27,7 @@ model = load_model('final.h5')
 
 resultsent = True
 globalresult = 0
+graydata = None
 # Routes
 # This is root path, use index.html in "static" folder
 @app.route('/')
@@ -42,12 +43,15 @@ def loadresult():
 @app.route('/ask', methods=['GET'])
 def askforresult():
     global resultsent
+    global globalresult
+    global graydata
+    # print("global result:"+resultsent)
     if resultsent:
         return jsonify(result=-1);
     else:
-        resultsent = True;
-        print("newresult")
-        return jsonify(result= globalresult);
+        print("result sent false")
+        resultsent = True
+        return jsonify(result= globalresult, gray=graydata);
 
 # This is a nice way to just serve everything in the "static" folder
 @app.route('/<path:path>')
@@ -66,6 +70,9 @@ def rgb2gray(rgb):
 # via a "POST" request
 @app.route('/upload', methods=['POST'])
 def upload():
+    global resultsent
+    global globalresult
+    global graydata
     # Get the image data from the POST
     data = request.form['img']
     # This converts it to an image
@@ -75,20 +82,19 @@ def upload():
     # Run the conversion
     gray = rgb2gray(img)
     # map values to between 0 and 1
+    graydata = gray.tolist()
     gray /= 255
-    print(gray)
-    # Reshap the data
-    # This is one 28x28 image with one channel (gray)
-    # 1 x 28 x 28 x 1
+
     inputs = gray.reshape(1, 28, 28, 1)
     # Probabilities
     prediction = model.predict(inputs);
     # What digit is it? (we could just pull the max prob from above, but showing both options)
     label = model.predict_classes(inputs)
     # Send everything back as JSON
+
     resultsent = False
-    globalresult = label
-    return jsonify(status='got image',number=label.tolist()[0],prediction=prediction.tolist()[0]);
+    globalresult = label.tolist()[0]
+    return jsonify(status='got image',number=globalresult,prediction=prediction.tolist()[0]);
 
 # Run app:
 if __name__ == '__main__':

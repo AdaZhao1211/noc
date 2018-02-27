@@ -8,7 +8,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 </head>
 <body>
+  <div style="position: absolute; left: 50%; top: 40%" id = "instruction">
+    <div style="position: relative; left: -90%;">
+      Draw something here 随便画画
+    </div>
+  </div>
+  <script type="text/javascript">
+  console.log("done");
+  document.ontouchmove = function(e){
+    console.log("done");
+    e.preventDefault(); }
+  </script>
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
+
 </body>
 
 </html>

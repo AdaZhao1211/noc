@@ -108,7 +108,7 @@ function classify() {
   function success(reply) {
     // Parse the reply
     var result = JSON.parse(reply);
-    //console.log(result);
+    //console.(result);
 
     // As long as we got something
     if (result.number != undefined) {
