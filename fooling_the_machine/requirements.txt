@@ -50,7 +50,7 @@ mitmproxy==2.0.2
 nbconvert==5.2.1
 nbformat==4.3.0
 nltk==3.2.4
-notebook==5.0.0
+notebook==6.1.5
 numpy==1.13.0
 packaging==16.8
 pandocfilters==1.4.1
