@@ -80,7 +80,7 @@ simplegeneric==0.8.1
 six==1.10.0
 smart-open==1.5.3
 sortedcontainers==1.5.7
-tensorflow==1.2.0
+tensorflow==2.5.0
 testpath==0.3
 Theano==0.9.0
 tornado==4.4.3
