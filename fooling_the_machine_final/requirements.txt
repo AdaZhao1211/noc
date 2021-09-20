@@ -46,7 +46,7 @@ Markdown==2.2.0
 MarkupSafe==0.23
 matplotlib==2.0.2
 mistune==0.7.4
-mitmproxy==2.0.2
+mitmproxy==7.0.3
 nbconvert==5.2.1
 nbformat==4.3.0
 nltk==3.2.4
