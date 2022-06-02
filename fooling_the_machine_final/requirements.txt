@@ -24,7 +24,7 @@ gym==0.9.1
 h2==2.6.2
 hpack==3.0.0
 html2text==2016.9.19
-html5lib==0.9999999
+html5lib==0.99999999
 hyperframe==4.0.2
 idna==2.5
 ipykernel==4.6.1
