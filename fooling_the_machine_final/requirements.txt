@@ -51,7 +51,7 @@ nbconvert==5.2.1
 nbformat==4.3.0
 nltk==3.2.4
 notebook==5.0.0
-numpy==1.13.0
+numpy==1.22.0
 packaging==16.8
 pandocfilters==1.4.1
 passlib==1.7.1
