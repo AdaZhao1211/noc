@@ -18,7 +18,7 @@ cycler==0.10.0
 decorator==4.0.11
 EditorConfig==0.12.1
 entrypoints==0.2.2
-Flask==0.12.2
+Flask==2.3.2
 gensim==2.1.0
 gym==0.9.1
 h2==2.6.2
